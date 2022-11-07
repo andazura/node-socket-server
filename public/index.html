@@ -12,7 +12,7 @@
     <script src="socket.io/socket.io.min.js"></script>
 
     <script>
-        let cliente = io();
+        var cliente = io();
         cliente.on('connect', function(){
             console.log("conectado al servidor")
         });
@@ -25,6 +25,13 @@
         cliente.emit('mensaje',{nombre:"fernando"})
         cliente.on('mensaje',(data)=>{
             console.log(data)
+        })
+        cliente.on('nuevo-mensaje',(data)=>{
+            console.log(data)
+        })
+        cliente.on('active-bands',(data)=>{
+            console.clear();
+            console.table(data)
         })
     </script>
 </body>
